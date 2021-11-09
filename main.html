@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .button {
+        display: inline-block;
+        border-radius: 8px;
+        background-color: #f41e74;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+    .button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+    .button:hover span {
+        padding-right: 25px;
+    }
+
+    .button:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+
+</style>
+
+<script>
+    document.onclick = () => applyCursorRippleEffect(event);
+
+    function applyCursorRippleEffect(e) {
+        const ripple = document.createElement("div");
+
+        ripple.className = "ripple";
+        document.body.appendChild(ripple);
+
+        ripple.style.left = `${e.clientX}px`;
+        ripple.style.top = `${e.clientY}px`;
+
+        ripple.style.animation = "ripple-effect .4s  linear";
+        ripple.onanimationend = () => document.body.removeChild(ripple);
+
+    }
+    const all = document.body.getElementsByTagName("*");
+    for (let i = 0;  i < all.length; ++i) {
+        all[i].onclick = (event) => event.stopPropagation();
+    }
+
+</script>
+<style>
+    .ripple {
+        width: 5px;
+        height: 5px;
+        background-color: transparent;
+        position: fixed;
+        border-radius: 50%;
+        border: 1px solid rgba(253, 252, 252, 0.55);
+    }
+
+    @keyframes ripple-effect {
+        to {
+            transform:scale(15);
+            opacity: 0.01;
+        }
+    }
+
+
+    .container {
+        background-image: url("background.png");
+        height: 100%;
+        width: 100%;
+        background-position: center;
+        padding-left: 5%;
+        padding-right: 5%;
+        position: relative;
+        box-sizing: border-box;
+    }
+
+</style>
+
+
+<head>
+    <title></title>
+</head>
+
+
+<body>
+<button class="button" style="vertical-align:bottom"><span>Hover </span></button>
+
+
+
+
+</body>
+
+
+</html>
