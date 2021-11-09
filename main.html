@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  class="container">
 <style>
     .button {
         display: inline-block;
@@ -93,20 +93,51 @@
         position: relative;
         box-sizing: border-box;
     }
+    .title-holder {
+        top: 50%;
+        left: 40%;
+        position: absolute;
+    }
+    .title {
+        font-size: 30px;
+        color: #ffffff;
+        width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        display:block;
+        border-right: 3px solid #ffffff;
+        animation: typewriter 8s steps(9) infinite, blinking-cursor 0.75s infinite;
+        animation-fill-mode: forwards
+    }
 
+    @keyframes typewriter {
+        0% { width:0 }
+        25% { width: 70% }
+        48% { width: 100% }
+        50% { width: 100% }
+        55% { width: 100% }
+        75% { width: 70%; }
+        85% { width: 30%; }
+        100% { width: 0; }
+    }
+
+    @keyframes blinking-cursor {
+        from { border-color: transparent }
+        to { border-color: #4244ff
+        }
+    }
 </style>
-
-
-<head>
-    <title></title>
-</head>
 
 
 <body>
 <button class="button" style="vertical-align:bottom"><span>Hover </span></button>
 
 
-
+<span class="title-holder">
+ <span class="title">
+  Welcome to Code Club!!
+ </span>
+</span>
 
 </body>
 
