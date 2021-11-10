@@ -66,13 +66,120 @@
         .layer3 {
             background-image: url("grey-red.svg");
         }
+        .ripple {
+            width: 5px;
+            height: 5px;
+            background-color: transparent;
+            position: fixed;
+            border-radius: 50%;
+            border: 1px solid rgba(253, 252, 252, 0.55);
+        }
+
+        @keyframes ripple-effect {
+            to {
+                transform:scale(15);
+                opacity: 0.01;
+            }
+        }
 
     </style>
+    <script>
+        document.onclick = () => applyCursorRippleEffect(event);
+
+        function applyCursorRippleEffect(e) {
+            const ripple = document.createElement("div");
+
+            ripple.className = "ripple";
+            document.body.appendChild(ripple);
+
+            ripple.style.left = `${e.clientX}px`;
+            ripple.style.top = `${e.clientY}px`;
+
+            ripple.style.animation = "ripple-effect .4s  linear";
+            ripple.onanimationend = () => document.body.removeChild(ripple);
+
+        }
+        const all = document.body.getElementsByTagName("*");
+        for (let i = 0;  i < all.length; ++i) {
+            all[i].onclick = (event) => event.stopPropagation();
+        }
+        // List of sentences
+        var _CONTENT = [
+            "Twinkle, twinkle, little star",
+            "How I wonder what you are",
+            "Up above the world so high",
+            "Like a diamond in the sky"
+        ];
+
+        // Current sentence being processed
+        var _PART = 0;
+
+        // Character number of the current sentence being processed
+        var _PART_INDEX = 0;
+
+        // Holds the handle returned from setInterval
+        var _INTERVAL_VAL;
+
+        // Element that holds the text
+        var _ELEMENT = document.querySelector("#text");
+
+        // Cursor element
+        var _CURSOR = document.querySelector("#cursor");
+
+        // Implements typing effect
+        function Type() {
+            // Get substring with 1 characater added
+            var text =  _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+            _ELEMENT.innerHTML = text;
+            _PART_INDEX++;
+
+            // If full sentence has been displayed then start to delete the sentence after some time
+            if(text === _CONTENT[_PART]) {
+                // Hide the cursor
+                _CURSOR.style.display = 'none';
+
+                clearInterval(_INTERVAL_VAL);
+                setTimeout(function() {
+                    _INTERVAL_VAL = setInterval(Delete, 50);
+                }, 1000);
+            }
+        }
+
+        // Implements deleting effect
+        function Delete() {
+            // Get substring with 1 characater deleted
+            var text =  _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+            _ELEMENT.innerHTML = text;
+            _PART_INDEX--;
+
+            // If sentence has been deleted then start to display the next sentence
+            if(text === '') {
+                clearInterval(_INTERVAL_VAL);
+
+                // If current sentence was last then display the first one, else move to the next
+                if(_PART === (_CONTENT.length - 1))
+                    _PART = 0;
+                else
+                    _PART++;
+
+                _PART_INDEX = 0;
+
+                // Start to display the next sentence after some time
+                setTimeout(function() {
+                    _CURSOR.style.display = 'inline-block';
+                    _INTERVAL_VAL = setInterval(Type, 100);
+                }, 200);
+            }
+        }
+
+        // Start the typing effect on load
+        _INTERVAL_VAL = setInterval(Type, 100);
+    </script>
+
 </head>
 <body>
+
 <section class="blue">
-    <h1>Nice Curves!</h1>
-    <p>A website is like a road. The more curves it has the more interesting it is.</p>
 </section>
 
 <div class="spacer layer2"></div>
