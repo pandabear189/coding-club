@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html lang="en"  class="container">
+<html lang="en">
+<head>
+ <title>hi</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+</head>
 <style>
     .button {
         display: inline-block;
@@ -84,7 +90,7 @@
 
 
     .container {
-        background-image: url("background.png");
+        background-color: coral;
         height: 100%;
         width: 100%;
         background-position: center;
@@ -100,6 +106,7 @@
     }
     .title {
         font-size: 30px;
+        font-family: 'Mochiy Pop One', sans-serif;;
         color: #ffffff;
         width: 0;
         overflow: hidden;
@@ -123,21 +130,23 @@
 
     @keyframes blinking-cursor {
         from { border-color: transparent }
-        to { border-color: #4244ff
+        to { border-color: #42b0ff
         }
+    }
+
+    .shape1 {
+     background-image: url("layered-waves-haikei.svg");
     }
 </style>
 
 
 <body>
-<button class="button" style="vertical-align:bottom"><span>Hover </span></button>
+ <div class="shape1"></div>
 
+ <div class="container">
 
-<span class="title-holder">
- <span class="title">
-  Welcome to Code Club!!
- </span>
-</span>
+ </div>
+
 
 </body>
 
