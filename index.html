@@ -5,8 +5,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Immigration Story</title>
-
+    <title>Curves, Waves, and Blobs</title>
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;400;900&display=swap" rel="stylesheet" />
@@ -23,21 +24,22 @@
             margin-right: 25px;
         }
         body {
-        margin: 0;
-        font-family: 'Prompt', sans-serif;
-        color: white;
-        background: #202731;
-        overflow-x: hidden;
+            margin: 0;
+            font-family: 'Prompt', sans-serif;
+            color: white;
+            background: #202731;
+            overflow-x: hidden;
         }
 
         section {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 400px;
-        padding-top: 100px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 400px;
+            padding-top: 100px;
         }
+
         .blue {
             background: #5195CF;
         }
@@ -47,22 +49,22 @@
         }
 
         .dark {
-            background: hsl(216, 21%, 16%); 
+            background: hsl(216, 21%, 16%);
         }
 
         .spacer {
-        aspect-ratio: 960/300;
-        width: 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
+            aspect-ratio: 960/300;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
         }
 
         .layer1 {
             background-image: url('./layer1.svg');
         }
         .layer2 {
-            background-image: url("./blue-grey.svg");
+            background-image: url("blue-grey.svg");
         }
         .layer3 {
             background-image: url("grey-red.svg");
@@ -111,8 +113,21 @@
 <body>
 
 <section class="blue">
-    <h1>Hello!</h1>
-    <p>Personal Narrative</p>
+<!--    <h1>Hello!</h1>-->
+<!--    <p>Personal Narrative</p>-->
+    <div>
+        <div></div>
+        <section>
+
+            <h1>
+                Welcome to Code Club
+            </h1>
+            <p>
+                This club is <span class='typing'></span>
+            </p>
+        </section>
+
+    </div>
 </section>
 
 <div class="spacer layer2"></div>
@@ -143,6 +158,8 @@
     <h1>Nice Curves!</h1>
     <p>A website is like a road. The more curves it has the more interesting it is.</p>
 </section>
+
+<script src="./main.js"></script>
 
 </body>
 
